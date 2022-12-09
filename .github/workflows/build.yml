@@ -17,10 +17,27 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 6.0.x
+        
+    - name: Install GitVersion
+      uses: gittools/actions/gitversion/setup@v0.9.7
+      with:
+        versionSpec: '5.5.0'
+        includePrerelease: true
+    - name: Define version
+      uses: gittools/actions/gitversion/execute@v0.9.7
+      with:
+        useConfigFile: true
+        configFilePath: ./build/GitVersion.yml
+    - name: Display Version
+      run: |
+        echo "Version: $GITVERSION_SEMVER"
+        
     - name: Restore dependencies
       working-directory: ./src
       run: dotnet restore
