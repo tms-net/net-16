@@ -15,6 +15,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Set Output
+      run: |
+        echo "$OUTPUT=$GITHUB_WORKSPACE/output" >> $GITHUB_ENV
+        echo "Output is: $OUTPUT"
+    
     - name: Checkout
       uses: actions/checkout@v3
       with:
@@ -48,7 +53,15 @@ jobs:
       run: dotnet restore
     - name: Build
       working-directory: ./src
-      run: dotnet build --no-restore
+      run: dotnet build -c Release --no-restore
     - name: Test
       working-directory: ./src
       run: dotnet test --no-build --verbosity normal
+    - name: Package      
+      working-directory: ./src
+      run: dotnet publish -c Release -o $OUTPUT
+    - name: Upload CloudApp package
+      uses: actions/upload-artifact@v3.1.1
+      with:
+        name: CloudApp-${{GITVERSION_SEMVER}}
+    
