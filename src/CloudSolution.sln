@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudApp", "CloudApp\CloudApp.csproj", "{A3CC7867-BE1D-47D6-9960-2BF9F5ADF248}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudApp.Tests", "CloudApp.Tests\CloudApp.Tests.csproj", "{183BDFAA-11EA-4852-B914-5916371DC8B7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{A3CC7867-BE1D-47D6-9960-2BF9F5ADF248}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3CC7867-BE1D-47D6-9960-2BF9F5ADF248}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A3CC7867-BE1D-47D6-9960-2BF9F5ADF248}.Release|Any CPU.Build.0 = Release|Any CPU
+		{183BDFAA-11EA-4852-B914-5916371DC8B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{183BDFAA-11EA-4852-B914-5916371DC8B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{183BDFAA-11EA-4852-B914-5916371DC8B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{183BDFAA-11EA-4852-B914-5916371DC8B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
