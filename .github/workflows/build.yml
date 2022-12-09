@@ -61,7 +61,7 @@ jobs:
       
     - name: Package      
       working-directory: ./src
-      run: dotnet publish --configuration -o $OUTPUT
+      run: dotnet publish --configuration Release -o $OUTPUT
       
     - name: Upload CloudApp package
       uses: actions/upload-artifact@v3.1.1
