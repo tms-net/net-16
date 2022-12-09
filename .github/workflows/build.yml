@@ -17,7 +17,7 @@ jobs:
     steps:
     - name: Set Output
       run: |
-        echo "$OUTPUT=$GITHUB_WORKSPACE/output" >> $GITHUB_ENV
+        echo "OUTPUT=$GITHUB_WORKSPACE/output" >> $GITHUB_ENV
         echo "Output is: $OUTPUT"
     
     - name: Checkout
@@ -57,9 +57,11 @@ jobs:
     - name: Test
       working-directory: ./src
       run: dotnet test --no-build --verbosity normal
+      
     - name: Package      
       working-directory: ./src
       run: dotnet publish -c Release -o $OUTPUT
+      
     - name: Upload CloudApp package
       uses: actions/upload-artifact@v3.1.1
       with:
