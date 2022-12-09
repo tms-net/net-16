@@ -1,0 +1,7 @@
+mode: Mainline
+branches:
+  main:
+    regex: ^latest$,
+    source-branches: ['main']
+  pull-request:
+    tag: pr
