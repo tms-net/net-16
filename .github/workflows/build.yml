@@ -61,12 +61,13 @@ jobs:
       
     - name: Test
       working-directory: ./src
-      run: dotnet test --no-build --verbosity normal --configuration Release --logger:'nunit;LogFilePath=${{env.TESTRESULTS}}/test-result.xml'
+      run: dotnet test --no-build --verbosity normal --configuration Release --logger 'trx;LogFileName=${{env.TESTRESULTS}}/test-result.xml'
     - name: Test Summary
-      uses: MirageNet/nunit-reporter@v1.1.0
+      uses: dorny/test-reporter@v1
       with:
-        path: '${{env.TESTRESULTS}}/**/*.xml'
-        access-token: ${{ secrets.GITHUB_TOKEN }}
+        path: '${{env.TESTRESULTS}}/**/*.trx'
+        name: dotnet tests
+        reporter: dotnet-trx        
       if: always()
   
     - name: Package      
