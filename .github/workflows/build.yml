@@ -46,7 +46,6 @@ jobs:
         configFilePath: ./build/GitVersion.yml
         targetPath: ./src
         updateAssemblyInfo: true
-        updateAssemblyInfoFilename: true
     - name: Display Version
       run: |
         echo "Version: $GITVERSION_SEMVER"
