@@ -61,7 +61,7 @@ jobs:
       
     - name: Test
       working-directory: ./src
-      run: dotnet test --no-build --verbosity normal --configuration Release --logger:"nunit;LogFilePath=${{env.$TESTRESULTS}}\test-result.xml"
+      run: dotnet test --no-build --verbosity normal --configuration Release --logger:'nunit;LogFilePath=${{env.$TESTRESULTS}}\test-result.xml'
     - name: Test Summary
       uses: test-summary/action@v2
       with:
