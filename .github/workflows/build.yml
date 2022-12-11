@@ -44,6 +44,9 @@ jobs:
       with:
         useConfigFile: true
         configFilePath: ./build/GitVersion.yml
+        targetPath: ./src
+        updateAssemblyInfo: true
+        updateAssemblyInfoFilename: true
     - name: Display Version
       run: |
         echo "Version: $GITVERSION_SEMVER"
@@ -57,7 +60,7 @@ jobs:
       
     - name: Test
       working-directory: ./src
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test --no-build --verbosity normal --configuration Release
       
     - name: Package      
       working-directory: ./src
