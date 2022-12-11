@@ -15,10 +15,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Set Output
+    - name: Set Env Vars
       run: |
         echo "OUTPUT=$GITHUB_WORKSPACE/output" >> $GITHUB_ENV
         echo "Output is: $OUTPUT"
+        echo "TESTRESULTS=$GITHUB_WORKSPACE/tests" >> $GITHUB_ENV
+        echo "Test output is: $TESTRESULTS"
     
     - name: Checkout
       uses: actions/checkout@v3
@@ -59,8 +61,13 @@ jobs:
       
     - name: Test
       working-directory: ./src
-      run: dotnet test --no-build --verbosity normal --configuration Release
-      
+      run: dotnet test --no-build --verbosity normal --configuration Release --results-directory $TESTRESULTS
+    - name: Test Summary
+      uses: test-summary/action@v2
+      with:
+        paths: '${{env.TESTRESULTS}}/**/*.xml'
+      if: always()
+  
     - name: Package      
       working-directory: ./src
       run: dotnet publish --configuration Release -o $OUTPUT
