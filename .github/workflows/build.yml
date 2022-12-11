@@ -63,9 +63,10 @@ jobs:
       working-directory: ./src
       run: dotnet test --no-build --verbosity normal --configuration Release --logger:'nunit;LogFilePath=${{env.TESTRESULTS}}/test-result.xml'
     - name: Test Summary
-      uses: test-summary/action@v2
+      uses: MirageNet/nunit-reporter@v1.1.0
       with:
-        paths: '${{env.TESTRESULTS}}/**/*.xml'
+        path: '${{env.TESTRESULTS}}/**/*.xml'
+        access-token: ${{ secrets.GITHUB_TOKEN }}
       if: always()
   
     - name: Package      
