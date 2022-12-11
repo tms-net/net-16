@@ -63,11 +63,13 @@ jobs:
       working-directory: ./src
       run: dotnet test --no-build --verbosity normal --configuration Release --logger 'trx;LogFileName=${{env.TESTRESULTS}}/test-result.trx'
     - name: Test Summary
-      uses: dorny/test-reporter@v1
+      uses: zyborg/dotnet-tests-report@v1
       with:
-        path: '${{env.TESTRESULTS}}/**/*.trx'
+        project_path: src/CloudApp.Tests
         name: dotnet tests
-        reporter: dotnet-trx        
+        report_name: cloud app tests
+        report_title: CloudApp Tests
+        github_token: ${{ secrets.GITHUB_TOKEN }}
       if: always()
   
     - name: Package      
