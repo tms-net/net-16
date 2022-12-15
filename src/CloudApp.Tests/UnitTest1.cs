@@ -1,5 +1,6 @@
 namespace CloudApp.Tests;
 
+[TestFixture]
 public class Tests
 {
     [SetUp]
