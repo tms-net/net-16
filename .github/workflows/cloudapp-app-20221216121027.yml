@@ -10,7 +10,7 @@ env:
   CONTAINER_APP_NAME: cloudapp-app-20221216121027
   CONTAINER_APP_RESOURCE_GROUP_NAME: andrienko
   CONTAINER_REGISTRY_LOGIN_SERVER: cloudapp20221216121534.azurecr.io
-  DOCKER_FILE_PATH: CloudApp/Dockerfile
+  DOCKER_FILE_PATH: src/CloudApp/Dockerfile
   PROJECT_NAME_FOR_DOCKER: cloudapp
 jobs:
   build:
