@@ -10,7 +10,7 @@ env:
   CONTAINER_APP_NAME: cloudapp-app-20221216121027
   CONTAINER_APP_RESOURCE_GROUP_NAME: andrienko
   CONTAINER_REGISTRY_LOGIN_SERVER: cloudapp20221216121534.azurecr.io
-  DOCKER_FILE_PATH: src/CloudApp/Dockerfile
+  DOCKER_FILE_PATH: CloudApp/Dockerfile
   PROJECT_NAME_FOR_DOCKER: cloudapp
 jobs:
   build:
@@ -29,7 +29,7 @@ jobs:
     - name: Build and push container image to registry
       uses: docker/build-push-action@v2
       with:
-        directory: src
+        context: ./src
         push: true
         tags: ${{ env.CONTAINER_REGISTRY_LOGIN_SERVER }}/${{ env.PROJECT_NAME_FOR_DOCKER }}:${{ github.sha }}
         file: ${{ env.DOCKER_FILE_PATH }}
